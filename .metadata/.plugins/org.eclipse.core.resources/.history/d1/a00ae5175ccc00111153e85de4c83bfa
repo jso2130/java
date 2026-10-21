@@ -1,0 +1,25 @@
+
+public class Loopex {
+
+	public static void main(String[] args) {
+		
+		/*
+		 * 반복문
+		 */
+		
+		// 1. for문
+		// : 횟수에 의한 반복 실행해야할 때
+		// for (초기값; 조건식; 단계)
+		
+		//안녕하세요 5회 출력
+		
+		for (int i = 1; i =< 5, i++) {
+			System.out.println("안녕하세요");
+		}
+		
+		// 2. while문
+		// : 조건에 의한 반복 실행해야할 때
+		
+	}
+	
+}

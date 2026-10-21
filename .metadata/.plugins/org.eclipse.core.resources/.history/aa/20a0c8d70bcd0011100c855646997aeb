@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class Loopex {
+
+	public static void main(String[] args) {
+		
+		/*
+		 * 반복문
+		 */
+		
+		// 1. for문
+		// : 횟수에 의한 반복 실행해야할 때
+		// for (초기값; 조건식; 단계)
+		
+		
+		// 문제) 안녕하세요 5회 출력하기
+		
+//		for (int i = 1; i =< 5; i++) {
+//			System.out.println("안녕하세요");
+//		}
+//		
+//		int i = 1;      // 초기값을 반복문 밖에 선언
+//		for (; i =< 5; i++) {
+//			System.out.println("안녕하세요");
+//		}
+//	
+//		for (int k = 0; k < 10; k++) {
+//			System.out.println("0");
+//		}
+		
+		
+		// 문제) 1부터 사용자가 입력한 정수까지의 합을 구하기
+		
+		Scanner scanner = new Scanner(System.in);
+//		
+//		System.out.println("정수를 입력하세요");
+//		int num = scanner.nextInt();
+//		
+//		int sum = 0;
+//		for (int i = 1; i <= num; i++) {
+//			sum += i;
+//		}
+//		System.out.println("sum: " + sum);
+		
+		
+		//문제 ) 3단 구구단 출력
+		
+//		for (int i = 1; i < 10 ; i++) {
+//			System.out.printf("3 * %d = %d%n", i, (3 * i));
+//			System.out.println(String.format("3 * %d = %d%n", i, (3 * i)));
+//		}
+		
+		
+		//문제 ) 전체 구구단 가로모드, 세로모드 출력하자
+		
+		//가로
+//		for (int i = 2; i < 10 ; i++) {
+//			System.out.printf("[ %d단 ]%n", i);
+//			for (int j = 1; j < 10 ; j++) {
+//				System.out.printf("%d * %d = %-2d   ", i, j, (j * i));
+//			}
+//			System.out.printf("%n");
+//		}
+		
+		//세로		
+		for (int i = 1; i < 10 ; i++) {
+			for (int j = 2; j < 10 ; j++) {
+				System.out.printf("%d * %d = %-2d   ", j, i, (j * i));
+			}
+			System.out.printf("%n");
+		}
+		
+		
+		//예제 
+		for (double d = 0.0; d < 1; d+ = 0.1) {
+			System.out.printf("d: %f \n", d);
+		}
+		
+		// 2. while문
+		// : 조건에 의한 반복 실행해야할 때
+		
+		// 문제) 안녕하세요
+		
+		scanner.close();
+		
+	}
+	
+}

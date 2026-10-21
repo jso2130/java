@@ -1,0 +1,27 @@
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		
+		//변수
+		/* : 메모리의 데이터를 저장하는 특정 공간. 
+		 * 
+		 * [변수 정의] 
+		 * 1. 변수 선언 : 메모리의 특정 공간을 청소하고 변수명을 설정하는 작업 
+		 * 2. 변수 초기화 : 변수에 데이터를 할당(대입)연산자로 저장하는 작업
+		 */
+		
+		//정수를 이용한 변수 선언과 초기화
+		// 데이터 타입 변수명 = 데이터;
+		int num = 10; 
+		
+		int num2;   //변수 선언과 초기화는 따로 해도 된다
+		num2 = 20;
+		
+		System.out.println("num :" + num);  // 연결연산자 ,를 사용하지 못한다.
+		
+		int address = system.identityHashCode(num);
+		System.out.println(address);
+	}
+
+}

@@ -1,0 +1,16 @@
+
+public class Operator3 {
+	public static void main(String[] args) {
+		
+		/*
+		 * 비교연산자
+		 * : 크고 작음을 나타내는 연산자
+		 */
+		
+		System.out.println(10 < 20);
+		System.out.println(10 > 20);
+		System.out.println(10 <= 20);
+		System.out.println(10 >= 20);
+		
+	}
+}

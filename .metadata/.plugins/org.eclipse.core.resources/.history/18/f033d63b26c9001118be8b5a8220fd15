@@ -1,0 +1,65 @@
+
+public class MainClass {
+
+	public static void main(String[] args) {
+	
+		//자료형
+		/*
+		 * 메모리에 저장할 데이터의 종류에 따라 할당 받는 메모리 크기가 다르다.
+		 * 각각의 메모리 크기에 따라 데이터 종류를 구분하는 것.
+		 * 
+		 * [메모리 단위]
+		 * 1. bit : 메모리 최소단위
+		 * 2. byte : 8bit
+		 * 3. KB(킬로바이트) : 1024byte
+		 * 4. MB(메가바이트) : 1024KB
+		 * 5. GB(기가바이트) : 1024MB
+		 * 6. TB(테라바이트) : 1024GB
+		 * 
+		 * [자료형을 정하는 이유]
+		 * -> 데이터 크기에 적합한 메모리 크기를 정하기 위해
+		 * over-flow : 메모리 크기보다 데이터가 커 다 담지 못하고 넘쳐 데이터 손실(왜곡) 
+		 * under-flow : 메모리 크기가 데이터보다 커서 메모리 크기가 낭비
+		 * 
+		 */
+		
+		
+		//정수
+		/*
+		 * byte   - 1byte  (-128 ~ 127)
+		 * short  - 2byte  (-32,768 ~ 32,767)
+		 * int    - 4byte
+		 * long   - 8byte
+		 */
+		
+		byte byteNum = 115;
+		System.out.println(byteNum);
+		short shortNum = 22768;
+		System.out.println(shortNum);
+		int intNum = 1147483648;
+		System.out.println(intNum);
+		long longNum = 7223372036854775808L;  //long타입은 값의 마지막에 L을 붙여야한다.
+		System.out.println(longNum);
+		
+		byte byteNum01 = -128; //byte의 최저값
+		System.out.println(byteNum01);
+		byteNum01 = (byte)(byteNum01 - 1);   //-129가 되지 않고 1만큼 'over-flow' 돼서 127이 된다.
+		System.out.println(byteNum01);
+		
+		System.out.println("byte 최솟값:" + Byte.MIN_VALUE); //Byte라는 Wrapper class를 이용해서 최솟값 조회
+		System.out.println("byte 최댓값:" + Byte.MAX_VALUE);
+		
+		
+		//실수(부동소수점)
+		/*
+		 * float - 4byte
+		 * double - 8byte
+		 */
+		
+		float floatNum = 3.14f;
+		System.out.println(floatNum);
+		double doubleNum = 3.14159265358979;
+		System.out.println(floatNum);
+	}
+
+}

@@ -1,0 +1,13 @@
+
+public class Loop01ex {
+	
+	public static void main(String[] args) {
+		
+		/*
+		 * while문
+		 * : '조건'에 만족(true)하는 동안 반복
+		 */
+		
+	}
+	
+}

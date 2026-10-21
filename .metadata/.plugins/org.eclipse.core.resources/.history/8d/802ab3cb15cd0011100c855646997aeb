@@ -1,0 +1,46 @@
+
+public class Loop01ex {
+	
+	public static void main(String[] args) {
+		
+		/*
+		 * while문
+		 * : '조건'에 만족(true)하는 동안 반복
+		 *
+		 * while(조건식){
+		 *  실행문
+		 * }
+		 */
+		
+		// 예제1) 안녕하세요 5번 출력
+		
+		int i = 0;
+		while (i < 5) {
+			System.out.println("안녕하세요");
+			i++;
+		} 
+		
+		// 예제2) 무한루프 방지 조건문
+		int i = 0;
+		boolean flag = true;
+		
+		while (flag) {
+			System.out.println(i);
+			i++;
+			
+			if (i > 100) 
+				flag = false;  //무한루프 방지 조건문
+		}
+	}
+	
+	
+	// 1. do ~ while문
+	int i = 1;
+	int sum = 0;
+	
+	do {
+		sum += i;
+		i++;
+	}while(i <= 10);
+	
+}

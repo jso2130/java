@@ -1,0 +1,39 @@
+
+public class MainClass {
+
+	public static void main(String[] args) {
+	
+		//자료형
+		/*
+		 * 메모리에 저장할 데이터의 종류에 따라 할당 받는 메모리 크기가 다르다.
+		 * 각각의 메모리 크기에 따라 데이터 종류를 구분하는 것.
+		 * 
+		 * [메모리 단위]
+		 * 1. bit : 메모리 최소단위
+		 * 2. byte : 8bit
+		 * 3. KB(킬로바이트) : 1024byte
+		 * 4. MB(메가바이트) : 1024KB
+		 * 5. GB(기가바이트) : 1024MB
+		 * 6. TB(테라바이트) : 1024GB
+		 * 
+		 * [자료형을 정하는 이유]
+		 * -> 데이터 크기에 적합한 메모리 크기를 정하기 위해
+		 * over-flow : 메모리 크기보다 데이터가 커 다 담지 못하고 넘쳐 데이터 손실(왜곡) 
+		 * under-flow : 메모리 크기가 데이터보다 커서 메모리 크기가 낭비
+		 * 
+		 */
+		
+		//정수
+		/*
+		 * byte   - 1byte  (-128 ~ 127)
+		 * short  - 2byte  (-32,768 ~ 32,767)
+		 * int    - 4byte
+		 * long   - 8byte
+		 */
+		
+		byte byteNum = 115;
+		System.out.println(byteNum);
+		
+	}
+
+}

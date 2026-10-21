@@ -1,0 +1,197 @@
+import java.util.Scanner;
+
+public class ConditionEx {
+	public static void main(String[] args) {
+		
+		/*
+		 * 조건문
+		 */
+		
+		// 1. if문 : 단일선택
+		/* if (조건식){
+		 *	실행문
+		 * }
+		 */
+		
+		Scanner scanner = new Scanner(System.in);
+//		System.out.println("정수를 입력하세요");
+//		int userInputData = scanner.nextInt();
+//		
+//		if (userInputData > 10) {
+//			System.out.println("10보다 크다");
+//		}
+//		
+//		if (userInputData == 10) {
+//			System.out.println("10과 같다");
+//		}
+//		
+//		if (userInputData < 10) {
+//			System.out.println("10보다 작다");
+//		}
+		
+		
+		
+		// 2. if ~ else문 : 양자택일
+		/* if (조건식){
+		 *	실행문
+		 * } else {
+		 *  실행문
+		 * }
+		 */
+		
+//		System.out.println("점수를 입력하세요");
+//		int myScore = scanner.nextInt();
+//		
+//		if (myScore >= 70) {
+//			System.out.println("합격");
+//		} else {
+//			System.out.println("불합격");
+//		}
+		
+		
+		
+		// 3. if ~ else if ~ else문 : 다중비교
+		/* if (조건식){
+		 *	실행문
+		 * } else {
+		 *  실행문
+		 * }
+		 */
+		
+		System.out.println("점수를 입력하세요");
+		int myScore = scanner.nextInt();
+		
+		if (myScore >= 90) {           // 논리적 오류가 발생하지 않게 작성 순서를 조심해야하한다.
+			System.out.println("수");
+			
+		} else if (myScore >= 80){
+			System.out.println("우");
+			
+		} else if (myScore >= 70){
+			System.out.println("미");
+			
+		} else if (myScore >= 60){
+			System.out.println("양");
+			
+		}  else {
+			System.out.println("가");
+		}
+		
+		
+		if (true) 
+			System.out.println();  // 실행문이 한 줄인 경우 대괄호 생략 가능
+		
+		
+		// 4. 중첩 조건문
+		// : 조건문 안에 조건문
+		// 사용자가 입력한 정수가 10보다 크다면 짝수인지 홀수인지 판별
+		
+		System.out.println("정수를 입력하세요");
+		int num = scanner.nextInt();
+		
+		if (num > 10) {
+			System.out.println("10보다 크다");
+			
+			if (num % 2 == 0) {
+				System.out.println("짝수");
+				
+			} else {
+				System.out.println("홀수");
+				
+			}
+			
+		} else {
+			System.out.println("10보다 작다");
+			
+		}
+		
+		
+		
+		/*
+		 * switch ~ case문
+		 * switch (조건식) {
+		 * 	case1 조건식의 결과값 :
+		 * 		실행문
+		 * 		break;
+		 * 	case2 조건식의 결과값 :
+		 * 		실행문
+		 * 		break;
+		 * }
+		 */
+		
+		//컴퓨터 시스템 종료 메뉴
+//		final int THE_POWER_SAVING_MODE = 1;
+//		final int THE_SYSTEM_SHUT_DOWN = 2;
+//		final int RE_START = 3;
+//		
+//		System.out.println("1 : The power saving mode");
+//		System.out.println("2 : The system shut-down");
+//		System.out.println("3 : Re-start");"
+//		
+//		int selectMenuNum = scanner.nextInt();
+//		
+//		switch (selectMenuNum) {
+//		case THE_POWER_SAVING_MODE :
+//			System.out.println("The power saving mode");
+//			break;
+//			
+//		case THE_SYSTEM_SHUT_DOWN :
+//			System.out.println("The system shut-down");
+//			break;
+//			
+//		case RE_START :
+//			System.out.println("Re-start");
+//			break;
+//		}
+		
+		/*
+		 *  LG U+
+		 *  NORMAL
+		 *  VIP
+		 *  VVIP
+		 */
+
+		final int NORMAL_GRADE = 1;
+		final int VIP_GRADE = 2;
+		final int VVIP_GRADE = 3;
+		
+		System.out.println("등급 입력하세요");
+		System.out.println("1.NORMAL  2.VIP  3.VVIP");
+		int customerGrade = scanner.nextInt();
+		
+//		switch (selectMenuNum) {
+//		case NORMAL_GRADE :
+//			System.out.println("월 문자 50개 무료 증정");
+//			break;
+//			
+//		case VIP_GRADE :
+//			System.out.println("월 문자 50개 무료 증정");
+//			System.out.println("월 1회 무료 영화권 1매 증정");
+//			break;
+//			
+//		case VVIP_GRADE :
+//			System.out.println("월 문자 50개 무료 증정");
+//			System.out.println("월 1회 무료 영화권 1매 증정");
+//			System.out.println("월 1회 크루즈 여행권 1매 증정");
+//			break;
+//		}                                                       // 중복 코드가 많은 버전
+		
+		switch (customerGrade) {
+		case VVIP_GRADE :
+			System.out.println("월 1회 크루즈 여행권 1매 증정");    // 등급의 순서를 바꾸고 각 등급에서만 받은 혜택만 남기고 break 생략 
+			
+		case VIP_GRADE :
+			System.out.println("월 1회 무료 영화권 1매 증정");
+			
+		case NORMAL_GRADE :
+			System.out.println("월 문자 50개 무료 증정");
+			break;
+			
+		default: 
+			System.out.println("잘못 입력하셨습니다.");
+			break;
+		}
+		
+		scanner.close();
+	}
+}

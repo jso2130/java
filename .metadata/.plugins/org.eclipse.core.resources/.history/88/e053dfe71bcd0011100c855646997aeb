@@ -1,0 +1,78 @@
+
+public class Loop02ex {
+	
+	public static void main(String[] args) {
+		
+		/*
+		 * 반복 흐름 제어
+		 */
+		
+		/*
+		 *  1. break
+		 *  : 프로그램 실행 즉시 중단
+		 */
+		
+		// 예제 ) 1 ~ 10까지 정수의 합을 구하되, 합이 30이 넘으면 중단
+		
+//		int sum = 0;
+//		for (int i = 1; i <= 10; i++) {
+//			sum += 1;
+//			if (sum > 30)
+//				break;
+//		}
+//		
+//		System.out.println(sum);
+		
+		
+		/*
+		 *  2. continue
+		 *  : 반복 실행 시 continue를 만나면 다음 실행문을 실행하지 않고 다음 반복으로 넘어감
+		 */
+		
+		// 예제 ) 1 ~ 10까지 정수를 출력하되, 짝수만 출력한다
+		
+//		for (int i = 1; i <= 10; i++) {
+//			if (i % 2 != 0)
+//				continue;
+//			System.out.println(i);
+//		}
+		
+		/*
+		 * 반복문 이름 부여하기
+		 * 
+		 * 지금까지 반복문의 다양한 기능에 대해서 살펴봤는데요, 
+		 * 마지막으로 반복문에 이름을 부여하는 것에 대해서 살펴보겠습니다. 
+		 * 반복문에 이름을 부여한다는 것은 for문 또는 while문에 명찰(Label)을 달아주는 것이라고 생각하면 됩니다. 
+		 * 그리고 명찰뒤에 콜론(:)을 붙여 줍니다.
+		 */
+		
+		// 예제 ) 구구단 출력 
+		// 1. 짝수 구구단은 생략
+		// 2. 모든 구구단 곱셈값 더하고 합이 200이 초과하면 출력 중단
+		
+		int sum = 0;
+		
+		loopLable1:
+		for (int i = 2; i < 10; i++) {
+			
+			if (i % 2 == 0)
+				continue;
+			
+			loopLabel2:   // 반복문 이름
+			for (int j = 1; j < 10; j++) {
+				
+				if (i % 2 == 0)
+					continue loopLabel2;
+				
+				sum += i * j;
+				if (sum > 200)
+					break loopLable1;
+				
+				System.out.printf("%d * %d = %d \n", i, j, sum); 
+			}
+			
+		}
+		
+	}
+
+}

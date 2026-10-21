@@ -1,0 +1,50 @@
+
+public class Operator3 {
+	public static void main(String[] args) {
+		
+		/*
+		 * 비교연산자
+		 * : 크고 작음을 나타내는 연산자
+		 */
+		
+		System.out.println(10 == 20); //false
+		System.out.println(10 != 20); //true
+		System.out.println(10 < 20);  //true
+		System.out.println(10 > 20);  //false
+		System.out.println(10 <= 20); //true
+		System.out.println(10 >= 20); //false
+		
+		// 주의해야하는 경우 - 실수는 정확한 숫자가 저장되지 않고 쓰레기 데이터가 붙어서 저장된다.
+		float num5 = 0.1f;  
+		double num6 = 0.1;
+		
+		System.out.println(num5 == num6); //false. 붙어있는 쓰레기 데이터가 다르기 때문에
+		
+		int num7 = 10;  
+		float num8 = 10.0f;
+		
+		System.out.println(num7 > num8);  //false
+		System.out.println(num7 >= num8); //true. int와 float가 연산되면 정수(int)도 실수로 형변환되기 때문에 같은 것이 맞다
+		System.out.println(num7 < num8);  //false
+		System.out.println(num7 <= num8); //true
+		System.out.println(num7 == num8); //true
+		System.out.println(num7 != num8); //false
+		
+		
+		/*
+		 * !!!!!!문자열 비교!!!!!!
+		 */
+		
+		String str1 = "Hello";
+		String str2 = "Hello";
+		
+		System.out.println(str1 == str2); //true
+		
+		String str3 = new String("Hello");
+		String str4 = new String("Hello");
+		
+		System.out.println(str3 == str4); //false. 문자열은 참조 데이터이므로 가지고 있는 값은 주소값
+		System.out.println(str3.equals(str4));
+		
+	}
+}

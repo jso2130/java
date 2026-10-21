@@ -1,0 +1,24 @@
+
+public class Operator3 {
+	public static void main(String[] args) {
+		
+		/*
+		 * 비교연산자
+		 * : 크고 작음을 나타내는 연산자
+		 */
+		
+		System.out.println(10 == 20); //false
+		System.out.println(10 != 20); //true
+		System.out.println(10 < 20);  //true
+		System.out.println(10 > 20);  //false
+		System.out.println(10 <= 20); //true
+		System.out.println(10 >= 20); //false
+		
+		// 주의해야하는 경우 - 실수는 정확한 숫자가 저장되지 않고 쓰레기 데이터가 붙어서 저장된다.
+		float num5 = 0.1f;  
+		double num6 = 0.1;
+		
+		System.out.println(num5 == num6); //false
+		
+	}
+}

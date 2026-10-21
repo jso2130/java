@@ -1,0 +1,35 @@
+
+public class Operator {
+	public static void main(String[] args) {
+		
+		/*
+		 * [연산자]
+		 * 
+		 * 산술 연산자   +, -, *, /, %, ++, --
+		 * 할당 연산자   =, +=, -=, *=, /=, %=, &=, |=
+		 * 비교 연산자   ==, !=, >, <, >=, <=
+		 * 논리 연산자   &&, ||, !
+	     */
+		
+		// 산술연산자
+		// 1-1. 숫자 덧셈
+		int num1 = 10;
+		int num2 = 20;
+		System.out.println(num1+num2);
+		
+		// 1-2. 문자열 덧셈(연결 연산자)
+		String str1 = "Hello";
+		String str2 = "World";
+		
+		System.out.println(str1+str2);
+		
+		// 1-3. 문자 덧셈(연결 연산자)
+		System.out.println('A' + 'B');    // 결과 : 131 (유니코드 덧셈 결과) 
+		
+		
+		// 비교연산자
+		// 대입(복합)연산자
+		
+		
+	}
+}
