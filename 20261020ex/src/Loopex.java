@@ -33,7 +33,7 @@ public class Loopex {
 		
 		// 문제) 1부터 사용자가 입력한 정수까지의 합을 구하기
 		
-		Scanner scanner = new Scanner(System.in);
+//		Scanner scanner = new Scanner(System.in);
 //		
 //		System.out.println("정수를 입력하세요");
 //		int num = scanner.nextInt();
@@ -116,46 +116,54 @@ public class Loopex {
 //			System.out.println();
 //		}
 		
+//		Scanner scanner = new Scanner(System.in);
+//		
+//		System.out.println("트리의 높이를 입력하세요");
+//		int height = scanner.nextInt();
+//		
+//		for (int i = 1; i <= height; i++) {        // 전체 행
+//			
+//			for (int j = 0; j < height - i; j++) {
+//				System.out.print(" ");
+//			}
+//			
+//			for (int j = 0; j < (i * 2) - 1; j++) {
+//				System.out.print("*");
+//			}
+//			
+//			System.out.println();
+//		} 
+//		
 		//달력
 		
-		System.out.println("MON\tTUE\tWED\tTHU\tFRI\tSAT\tSUN");
-		
-		int offset = 3;
-		int day = 1;
-		
-		for (int i = 0; i < 5; i++) {
-			
-			// 날짜 없는 날 '-'찍기
-			for (int j = 0; j < offset; j++) {
-				System.out.print(String.format("%3c\t",'-'));
-			}
-			
-			// 날짜 찍기
-			for (int j = 0; j < 7 - offset; j++) {
-				
-				if (day <= 30) {
-					System.out.print(String.format("%3d\t", day));
-					day++;
-				} else {
-					System.out.print(String.format("%3c\t",'-'));
-				}
-				
-			}
-			
-			offset = 0; //첫 번째 줄만 offset적용하고 초기화
-			System.out.println(); //개행
-			
-		}
-		
-		
-		
-		// 2. while문
-		// : 조건에 의한 반복 실행해야할 때
-		// while(조건식){
-		//    실행문
-		// }
-		
-		
+//		System.out.println("MON\tTUE\tWED\tTHU\tFRI\tSAT\tSUN");
+//		
+//		int offset = 3;
+//		int day = 1;
+//		
+//		for (int i = 0; i < 5; i++) {        // 달력 전체 줄이 5줄
+//			
+//			// 날짜 없는 날 '-'찍기
+//			for (int j = 0; j < offset; j++) {
+//				System.out.print(String.format("%3c\t",'-'));
+//			}
+//			
+//			// 날짜 찍기
+//			for (int j = 0; j < 7 - offset; j++) {
+//				
+//				if (day <= 30) {
+//					System.out.print(String.format("%3d\t", day));
+//					day++;
+//				} else {
+//					System.out.print(String.format("%3c\t",'-'));
+//				}
+//				
+//			}
+//			
+//			offset = 0; //첫 번째 줄만 offset적용하고 초기화
+//			System.out.println(); //개행
+//			
+//		}
 		
 		scanner.close();
 		
