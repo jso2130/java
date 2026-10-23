@@ -71,6 +71,10 @@ public class MainClass {
 						// memberID = scanner.next();  //공백이 있으면 안되니까 next로
 						idFlag = false;
 						
+					} else {
+						
+						System.out.println("중복된 ID가 존재합니다.");
+					
 					}
 					
 				}
