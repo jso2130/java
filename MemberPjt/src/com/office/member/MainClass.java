@@ -68,7 +68,7 @@ public class MainClass {
 					
 						
 					if (getID == null) {
-						// memberID = scanner.next();  //공백이 있으면 안되니까 next로
+
 						idFlag = false;
 						
 					} else {
