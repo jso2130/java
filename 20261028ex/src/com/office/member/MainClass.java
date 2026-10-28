@@ -6,22 +6,24 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		
-		Scanner scanner = new Scanner(System.in);
-		
-		
-		boolean dumyFlag = true;
+		Scanner scanner = new Scanner(System.in);    // 스캐너 객체 생성
 		
 		MemberDB memberDB = new MemberDB(); // 전체 장부 객체 딱 한번만 생성
-		MemberService memberService = new MemberService(memberDB);  
+		SystemFlag systemFlag = new SystemFlag(); 
+		MemberService memberService = new MemberService(memberDB, systemFlag);  
 		MemberDumy memberDumy = new MemberDumy(memberDB);
-		if (dumyFlag) {
-			memberDumy.initMemberDumyData();
-		}
+		
 		
 		/*
 		 * 과제: 더미 데이터 초기화는 개발환경과 실환경으로 구분해야한다.
 		 */
+		boolean dumyFlag = true;
 		
+		if (dumyFlag) {
+			memberDumy.initMemberDumyData();
+		}
+		
+		/*메뉴 선택 상수*/
 		final int MENU_SIGN_UP = 1;
 		final int MENU_SIGN_IN = 2;
 		final int MENU_MODIFY = 3;
@@ -30,7 +32,8 @@ public class MainClass {
 		final int MENU_SYSTEM_OUT = 99;
 		
 		
-		while (systemFlag) {
+		
+		while (SystemFlag.systemFlag) {              // 시스템은 종료하기 전까지 계속 실행되어야하니까 while문
 			
 			System.out.println("1.SIGN-UP  2.SIGN-IN  3.MODIFY  4.DELETE  5.MEMBERS-INFO  99.SYSTEM-OUT");
 			int selectedMenu = scanner.nextInt();
@@ -67,7 +70,7 @@ public class MainClass {
 				
 			case MENU_SYSTEM_OUT:
 				System.out.println("Say Good bye");
-				systemFlag = false;
+				SystemFlag.systemFlag = false;
 				break;
 			
 				/*
@@ -79,7 +82,7 @@ public class MainClass {
 				
 		}
 
-		scanner.close();
+		scanner.close();  // 스캐너 종료
 		
 	}
 	

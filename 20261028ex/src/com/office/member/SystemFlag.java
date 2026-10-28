@@ -1,6 +1,6 @@
 package com.office.member;
 
-public class systemFlag {
+public class SystemFlag {
 
 	boolean systemFlag = true;
 	
