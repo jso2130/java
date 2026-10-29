@@ -6,11 +6,11 @@ public class MemberService {
 
 	/*속성 - 멤버 필드*/
 	MemberDB db;
-	SystemFlag systemFlag;
+	Flag systemFlag;
 	int signInFailCount = 0;     // 로그인 시도 횟수 세는 속성
 	
 	/*생성자*/
-	public MemberService(MemberDB memberDB, SystemFlag systemFlag) {
+	public MemberService(MemberDB memberDB, Flag systemFlag) {
 		this.db = memberDB;
 		this.systemFlag = systemFlag;
 	}
@@ -24,32 +24,40 @@ public class MemberService {
 		// 데이터 받기
 		/*
 		 * 과제: 아이디 중복체크 기능
-		 * 과제: 비밀번호는 8~12자 문자로 표현
 		 */
-		boolean signUpidFlag = true;
-		while (signUpidFlag) {
+		while (true) {
 			
 			System.out.println("Input new member ID");
 			String memberId = scanner.next();
 			
 			if (db.memberDB.containsKey(memberId)) {
+				
 				System.out.println("이미 존재하는 아이디입니다.");
+				
 			} else {
-				signUpidFlag = false;
+				
+				break;
+				
 			}
 				
 		}
 		
-		boolean signUpPwFlag = true;
-		while (signUpPwFlag) {
+		/*
+		 * 과제: 비밀번호는 8~12자 문자로 표현
+		 */
+		while (true) {
 			
 			System.out.println("Input new member PW");
 			String memberPw = scanner.next();
 			
-			if (7 < memberPw.length() && memberPw.length() < 12) {
-				signUpPwFlag = false;
+			if (7 <= memberPw.length() && memberPw.length() <= 12) {
+				
+				break;
+				
 			} else {
+				
 				System.out.println("비밀번호는 8~12자 사이로 입력해주세요");
+				
 			}
 				
 		}
@@ -61,7 +69,7 @@ public class MemberService {
 		System.out.println("Input new member PHONE");
 		String memberPhone = scanner.next();
 		
-		
+		//멤버 클래스를 통해서 각 정보를 
 		Member member = new Member(memberId, memberPw, memberMail, memberPhone);
 		//MemberDB db = new MemberDB();
 		
@@ -80,9 +88,7 @@ public class MemberService {
 		 * 과제: 로그인 실패가 3회 초과되면 시스템 종료
 		 */
 		
-		boolean signInFlag = true;
-		
-		while (signInFlag) {
+		while (true) {
 			
 			if(signInFailCount < 3) {
 				
@@ -99,27 +105,27 @@ public class MemberService {
 					if (searchMember.memberPw.equals(memberPw)) {  // 입력받은 비밀번호랑 저장된 비밀번호가 같다면
 						
 						System.out.println("SIGN-IN SUCCESS!");
-						signInFlag = false;    // 반복문 종료
 						signInFailCount = 0;   // 성공하면 로그인 횟수 초기화
+						break;    // 반복문 종료
 						
 					} else if (!searchMember.memberPw.equals(memberPw)){  // 비밀번호가 맞지 않는 경우
 						
 						System.out.println("맞지 않는 비밀번호입니다.");
-						signInFailCount += 1;
+						signInFailCount ++;
 						
 					}
 					
 				} else {  // 아이디가 존재하지 않는 경우
 					
 					System.out.println("존재하지 않는 아이디입니다.");
-					signInFailCount += 1;
+					signInFailCount ++;
 					
 				}
 				
 			} else {
 				
-	            systemFlag.systemFlag = false;   // 메인프로그램 종료
-	            signInFlag = false;              // 반복문 종료
+	            systemFlag.systemFlag = false;  // 메인프로그램 종료
+	            break;                          // 반복문 종료
 			}
 		
 		}	

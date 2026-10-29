@@ -1,5 +1,6 @@
 package com.office.member;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class MainClass {
@@ -9,74 +10,72 @@ public class MainClass {
 		Scanner scanner = new Scanner(System.in);    // 스캐너 객체 생성
 		
 		MemberDB memberDB = new MemberDB(); // 전체 장부 객체 딱 한번만 생성
-		SystemFlag systemFlag = new SystemFlag(); 
-		MemberService memberService = new MemberService(memberDB, systemFlag);  
-		MemberDumy memberDumy = new MemberDumy(memberDB);
+		Flag systemFlag = new Flag(); 
+		Config config = new Config();
+		Menu menu = new Menu();
 		
+		MemberService memberService = new MemberService(memberDB, systemFlag);  
 		
 		/*
 		 * 과제: 더미 데이터 초기화는 개발환경과 실환경으로 구분해야한다.
 		 */
-		boolean dumyFlag = true;
 		
-		if (dumyFlag) {
+		if (IS_DEV) {
+			MemberDumy memberDumy = new MemberDumy(memberDB);
 			memberDumy.initMemberDumyData();
 		}
 		
-		/*메뉴 선택 상수*/
-		final int MENU_SIGN_UP = 1;
-		final int MENU_SIGN_IN = 2;
-		final int MENU_MODIFY = 3;
-		final int MENU_DELETE = 4;
-		final int MENU_PRINT_ALL = 5;
-		final int MENU_SYSTEM_OUT = 99;
-		
-		
-		
-		while (SystemFlag.systemFlag) {              // 시스템은 종료하기 전까지 계속 실행되어야하니까 while문
+		while (Flag.systemFlag) {              // 시스템은 종료하기 전까지 계속 실행되어야하니까 while문
 			
 			System.out.println("1.SIGN-UP  2.SIGN-IN  3.MODIFY  4.DELETE  5.MEMBERS-INFO  99.SYSTEM-OUT");
 			int selectedMenu = scanner.nextInt();
 			
 			switch (selectedMenu) {
 			
-			case MENU_SIGN_UP:
-				// memberService = new MemberService();
-				memberService.doSignUp(scanner);  // 스캐너 객체를 넣어준다. MMI(macine to macine interface)
+			case Menu.MENU_SIGN_UP:
+				memberService.doSignUp(scanner);  // 스캐너 객체를 넣어준다.
 				break;
 
-			case MENU_SIGN_IN:
-				// memberService = new MemberService();
+			case Menu.MENU_SIGN_IN:
 				memberService.doSignIn(scanner);
 				break;
 				
-			case MENU_MODIFY:
-				
+			case Menu.MENU_MODIFY:
 				memberService.doModify(scanner);
-				
 				break;
 				
-			case MENU_DELETE:
-				
+			case Menu.MENU_DELETE:
 				memberService.doDelete(scanner);
+				break;
+				
+			case Menu.MENU_PRINT_ALL:
+				HashMap<String, Member> db = memberDB.memberDB;
+				
+				for (String key : db.keySet()) {
+					Member member = db.get(key);
+					
+					System.out.println(member.memberId);
+					System.out.println(member.memberPw);
+					System.out.println(member.memberMail);
+					System.out.println(member.memberPhone);
+					
+				}
+				
+				for (Member member : db.values()) {
+					
+					System.out.println(member.memberId);
+					System.out.println(member.memberPw);
+					System.out.println(member.memberMail);
+					System.out.println(member.memberPhone);
+					
+				}
 				
 				break;
 				
-			case MENU_PRINT_ALL:
-				
-				
-				
-				break;
-				
-			case MENU_SYSTEM_OUT:
+			case Menu.MENU_SYSTEM_OUT:
 				System.out.println("Say Good bye");
-				SystemFlag.systemFlag = false;
+				Flag.systemFlag = false;
 				break;
-			
-				/*
-				 * 과제: 케이스에 사용되는 리터럴 상수를 상수로 변경
-				 * 과제: 메뉴 5번 생성해서 전체 회원 정보 출력하는 기능을 구현
-				 */
 				
 			}
 				

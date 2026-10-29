@@ -7,4 +7,5 @@
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.office.member.MemberDB"/>
+    <fullyQualifiedTypeName name="com.office.member.Config"/>
 </qualifiedTypeNameHistroy>
