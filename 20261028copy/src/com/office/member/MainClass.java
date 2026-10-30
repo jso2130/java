@@ -25,6 +25,8 @@ public class MainClass {
 			memberDumy.initMemberDumyData();
 		}
 		
+		Menu selectedMenuNum = new Menu();
+		
 		
 		
 		while (flag.systemFlag) {
@@ -36,28 +38,28 @@ public class MainClass {
 			/*메뉴별 비즈니스 로직*/
 			switch (selectedMenu) {  
 			
-			case Menu.MENU_SIGN_UP:			
+			case selectedMenu.MENU_SIGN_UP:			
 				memberService.doSignUp();
 				break;
 
-			case Menu.MENU_SIGN_IN:			
+			case selectedMenu.MENU_SIGN_IN:			
 				memberService.doSignIn(flag);
 				break;
 
-			case Menu.MENU_MODIFY:			
+			case selectedMenu.MENU_MODIFY:			
 				memberService.doModify();
 				break;
 
-			case Menu.MENU_DELETE:			
+			case selectedMenu.MENU_DELETE:			
 				memberService.doDelete();
 				break;
 
-			case Menu.MENU_SYSTEM_OUT:		
+			case selectedMenu.MENU_SYSTEM_OUT:		
 				flag.systemFlag = false;
 				System.out.println("Say Good bye~");
 				break;
 				
-			case Menu.MENU_PRINT_ALL_MEMBER:
+			case selectedMenu.MENU_PRINT_ALL_MEMBER:
 				
 				HashMap<String, Member> db = memberDB.memberDB;
 

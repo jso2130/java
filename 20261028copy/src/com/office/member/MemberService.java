@@ -119,38 +119,45 @@ public class MemberService {
 	 */
 	public void doModify() {
 		
-		System.out.println("Input member ID");
-		String memberId = scanner.next();
-
-		System.out.println("Input member PW");
-		String memberPw = scanner.next();
-
-		System.out.println("Input member MAIL");
-		String memberMail = scanner.next();
-
-		System.out.println("Input member PHONE");
-		String memberPhone = scanner.next();
-		
-		
-		// 인증 절차 추가
-		Member searchedMember = db.memberDB.get(memberId);
-		
-		if (searchedMember != null && searchedMember.memberPw.equals(memberPw)) {
-			searchedMember.memberPw = memberPw;
-			searchedMember.memberMail = memberMail;
-			searchedMember.memberPhone = memberPhone;
+		while (true) {
 			
-		} else {
-			return;
+			System.out.println("Input member ID");
+			String memberId = scanner.next();
+			
+			Member searchMember  = db.memberDB.get(memberId);
+			if (searchMember != null) {
+				
+				System.out.println("Input member PW");
+				String memberPw = scanner.next();
+				
+				if (searchMember.memberPw.equals(memberPw)) {
+					
+					System.out.println("Input member PW");
+					String newMemberPw = scanner.next();
+					
+					System.out.println("Input member MAIL");
+					String newMemberMail = scanner.next();
+					
+					System.out.println("Input member PHONE");
+					String newMemberPhone = scanner.next();
+					
+					searchMember.memberPw = newMemberPw;
+					searchMember.memberMail = newMemberMail;
+					searchMember.memberPhone = newMemberPhone;
+					
+					searchMember.printInfo();
+					
+					break;
+					
+				}
+				
+			} else {
+				
+				System.out.println("존재하지 않는 아이디입니다.");
+				
+			}
 			
 		}
-		
-		searchedMember = db.memberDB.get(memberId);
-		searchedMember.printInfo();
-		
-		/*
-		 * 과제7: ID, PW 인증 -> ok -> 정보 수정
-		 */
 		
 	}
 	
