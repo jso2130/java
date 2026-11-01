@@ -2,6 +2,8 @@ package com.office.member;
 
 public class Flag {
 
-	public static boolean systemFlag = true;
+	boolean systemFlag = true;
+	
+	boolean login = false;
 	
 }

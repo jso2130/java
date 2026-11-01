@@ -10,16 +10,20 @@ public class MemberService {
 	
 	// 생성자
 	public MemberService(MemberDB memberDB, Scanner scanner) {
+		
 		this.db = memberDB;
 		this.scanner = scanner;
+		
 	}
 	
 	// 멤버 메서드
+	
 	/*
 	 * 회원 가입
 	 */
 	public void doSignUp() {
 		
+		/*과제 - 아이디 중복 체크*/
 		System.out.println("Input new member ID");
 		String memberId = scanner.next();
 
@@ -39,6 +43,7 @@ public class MemberService {
 			
 		}
 		
+		/*과제 - 비밀번호는 8~12 문자로 표현*/
 		System.out.println("Input new member PW");
 		String memberPw = scanner.next();
 		
@@ -60,16 +65,14 @@ public class MemberService {
 		System.out.println("Input new member PHONE");
 		String memberPhone = scanner.next();
 
+		// 새 멤버 객체 생성
 		Member member = new Member(memberId, memberPw, memberMail, memberPhone);
 		
+		// db에 저장
 		db.memberDB.put(memberId, member);
 		
+		// 저장된 정보 출력
 		db.memberDB.get(memberId).printInfo();
-		
-		/*
-		 * 과제4: ID 중복 체크 기능 추가
-		 * 과제5: 비밀번호는 8~12 문자로 표현
-		 */
 		
 	}
 	
@@ -107,10 +110,6 @@ public class MemberService {
 			}
 			
 		}
-		
-		/*
-		 * 과제6: 로그인 실패가 3회 초과이면 시스템 종료
-		 */
 		
 	}
 	

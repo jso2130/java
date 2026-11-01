@@ -7,7 +7,9 @@ public class MemberDumy {
 	
 	// 생성자
 	public MemberDumy(MemberDB memberDB) {
+		
 		this.db = memberDB;
+		
 	}
 	
 	// 메서드
@@ -21,8 +23,10 @@ public class MemberDumy {
 		String[] memberPHONEs = {"010-1234-5678", "010-1111-2222", "010-3333-4444"};
 		
 		for(int i = 0; i < memberIDs.length; i++) {
+			
 			Member member = new Member(memberIDs[i], memberPWs[i], memberMAILs[i], memberPHONEs[i]);
 			db.memberDB.put(memberIDs[i], member);
+			
 		}
 		
 	}

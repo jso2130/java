@@ -4,85 +4,70 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class MainClass {
-
+	
 	public static void main(String[] args) {
 		
-		Scanner scanner = new Scanner(System.in);    // 스캐너 객체 생성
+		Scanner scanner = new Scanner(System.in);
 		
-		MemberDB memberDB = new MemberDB(); // 전체 장부 객체 딱 한번만 생성
-		Flag systemFlag = new Flag(); 
-		Config config = new Config();
-		Menu menu = new Menu();
+		Flag flag = new Flag();
 		
-		MemberService memberService = new MemberService(memberDB, systemFlag);  
+		MemberDB memberDB = new MemberDB();
 		
-		/*
-		 * 과제: 더미 데이터 초기화는 개발환경과 실환경으로 구분해야한다.
-		 */
+		MemberService memberService = new MemberService(memberDB, scanner, flag);
 		
-		if (IS_DEV) {
-			MemberDumy memberDumy = new MemberDumy(memberDB);
-			memberDumy.initMemberDumyData();
-		}
+		MemberDumy memberDumy = new MemberDumy(memberDB);
+		memberDumy.initDumyData();
 		
-		while (Flag.systemFlag) {              // 시스템은 종료하기 전까지 계속 실행되어야하니까 while문
+		// 메뉴 선택
+		while (flag.systemFlag) {
 			
-			System.out.println("1.SIGN-UP  2.SIGN-IN  3.MODIFY  4.DELETE  5.MEMBERS-INFO  99.SYSTEM-OUT");
-			int selectedMenu = scanner.nextInt();
+			System.out.println("1.회원가입   2.로그인   3.정보 수정   4.탈퇴   99.시스템 종료");
+			int SelectedMenuNum = scanner.nextInt();
 			
-			switch (selectedMenu) {
+			switch (SelectedMenuNum) {
 			
-			case Menu.MENU_SIGN_UP:
-				memberService.doSignUp(scanner);  // 스캐너 객체를 넣어준다.
-				break;
-
-			case Menu.MENU_SIGN_IN:
-				memberService.doSignIn(scanner);
-				break;
+			// 1. 회원가입
+			case Menu.MENU_SIGN_UP: 
 				
-			case Menu.MENU_MODIFY:
-				memberService.doModify(scanner);
-				break;
-				
-			case Menu.MENU_DELETE:
-				memberService.doDelete(scanner);
-				break;
-				
-			case Menu.MENU_PRINT_ALL:
-				HashMap<String, Member> db = memberDB.memberDB;
-				
-				for (String key : db.keySet()) {
-					Member member = db.get(key);
-					
-					System.out.println(member.memberId);
-					System.out.println(member.memberPw);
-					System.out.println(member.memberMail);
-					System.out.println(member.memberPhone);
-					
-				}
-				
-				for (Member member : db.values()) {
-					
-					System.out.println(member.memberId);
-					System.out.println(member.memberPw);
-					System.out.println(member.memberMail);
-					System.out.println(member.memberPhone);
-					
-				}
+				memberService.doSignUp();
 				
 				break;
 				
-			case Menu.MENU_SYSTEM_OUT:
-				System.out.println("Say Good bye");
-				Flag.systemFlag = false;
+			// 2. 로그인	
+			case Menu.MENU_SIGN_IN: 
+				
+				memberService.doSignIn();
+				
+				break;
+			
+			// 3. 정보 수정	
+			case Menu.MENU_MODIFY: 
+				
+				memberService.doModify();
+				
+				break;
+				
+			// 4. 탈퇴	
+			case Menu.MENU_DELETE: 
+				
+				memberService.doDelete();
+				
+				break;
+				
+			// 99. 시스템 종료	
+			case Menu.MENU_SYSTEM_OUT: 
+				
+				flag.systemFlag = false;
+				System.out.println("시스템이 종료됩니다");
+				
 				break;
 				
 			}
-				
-		}
-
-		scanner.close();  // 스캐너 종료
 		
+		}
+		
+		scanner.close();
+	
 	}
 	
 }
