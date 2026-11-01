@@ -15,8 +15,14 @@ public class MainClass {
 		
 		MemberService memberService = new MemberService(memberDB, scanner, flag);
 		
-		MemberDumy memberDumy = new MemberDumy(memberDB);
-		memberDumy.initDumyData();
+		Config config = new Config();
+		if (config.IS_DEV) {
+			
+			MemberDumy memberDumy = new MemberDumy(memberDB);
+			memberDumy.initDumyData();
+		
+		}
+		
 		
 		// 메뉴 선택
 		while (flag.systemFlag) {

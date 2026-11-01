@@ -95,7 +95,7 @@ public class MemberService {
 				if (SearchedMember.memberPW.equals(memberPw)) {
 					
 					System.out.println("로그인 되었습니다");
-					flag.login = true;
+					flag.islogin = true;
 					id = memberId;
 					return; 
 					
@@ -119,21 +119,19 @@ public class MemberService {
 		}
 		
 		System.out.println("로그인 실패 횟수가 3회를 초과했습니다. 시스템이 종료됩니다.");
-		flag.systemFlag = false;
+		flag.isSystemRunning = false;
 		
 	}
 
-	// 정보 수정
+	/*정보 수정*/
 	public void doModify() {
 		
-		/*버전 2*/
-		
-		if (!flag.login) {
+		if (!flag.islogin) {
 		
 			System.out.println("로그인이 필요한 서비스입니다. 로그인 먼저 진행해주세요");
 			doSignIn();
 			
-			if (!flag.login)  // 그래도 로그인 시도가 실패했을 때 메서드가 종료될 수 있게 하는 장치
+			if (!flag.islogin)  // 그래도 로그인 시도가 실패했을 때 메서드가 종료될 수 있게 하는 장치
 				return;
 			
 		}
@@ -178,7 +176,8 @@ public class MemberService {
 		}
 		
 		
-		/*버전 1*/
+
+		
 //		while (true) {
 //			
 //			if (flag.login) {
@@ -241,7 +240,47 @@ public class MemberService {
 		
 	}
 	
+	/*회원 탈퇴*/
 	public void doDelete() {
+		
+		if (!flag.islogin) {
+			
+			System.out.println("로그인이 필요한 서비스입니다. 로그인 먼저 진행해주세요");
+			doSignIn();
+			
+			if (!flag.islogin)  // 그래도 로그인 시도가 실패했을 때 메서드가 종료될 수 있게 하는 장치
+				return;
+			
+		}
+		
+		Member loginedMember = db.memberDB.get(id);
+		
+		if (loginedMember == null) {  // 혹시 모를 예외 방지
+			
+			System.out.println("회원 정보를 찾을 수 없습니다");
+			return;
+			
+		}
+		
+		while (true) {
+			
+			System.out.println("탈퇴할 회원의 비밀번호를 입력해주세요");
+			String memberPw = scanner.next();
+			
+			if (loginedMember.memberPW.equals(memberPw)) {
+				
+				db.memberDB.remove(id);
+				flag.islogin = false;
+				id = null;
+				return;
+			    
+			} else {
+				
+				System.out.println("잘못된 비밀번호입니다");
+				
+			}
+			
+		}
 		
 	}
 	
