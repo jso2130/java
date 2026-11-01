@@ -41,6 +41,7 @@ public class PayService {
 		System.out.println(month + "월 급여 지급 완료");
 		
 		// 급여 횟수 누적해주기
+		// 싱글턴 객체는 객체를 생성하는 메서드를 통해 객체를 꺼내와야해서 메서드를 실행한다.
 		PayCount.getPayCountInstance().setCnt();
 		
 		// 누적 급여 횟수 출력
