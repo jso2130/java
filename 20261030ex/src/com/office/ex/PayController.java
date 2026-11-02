@@ -21,9 +21,11 @@ public class PayController {
 			PayService payService = new PayService();
 			payService.pay(thisMonth);
 			
+			break;
+			
 		}
 		
-//		scanner.close();
+		scanner.close();
 	}
 
 }
