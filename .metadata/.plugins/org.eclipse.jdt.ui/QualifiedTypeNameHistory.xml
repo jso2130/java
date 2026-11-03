@@ -3,7 +3,6 @@
     <fullyQualifiedTypeName name="com.office.classex02.NewStudent"/>
     <fullyQualifiedTypeName name="com.office.member.MemberDB"/>
     <fullyQualifiedTypeName name="com.office.member.Config"/>
-    <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="com.office.member.Member"/>
     <fullyQualifiedTypeName name="java.lang.Character"/>
     <fullyQualifiedTypeName name="com.office.methodex.Car"/>
@@ -12,6 +11,11 @@
     <fullyQualifiedTypeName name="com.office.ex.Deari"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.office.ex.PayCount"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.office.inheri.restraurant.ParentRestaurant"/>
+    <fullyQualifiedTypeName name="com.office.inheri.restraurant.ChildRestaurant"/>
+    <fullyQualifiedTypeName name="java.security.PublicKey"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
 </qualifiedTypeNameHistroy>
