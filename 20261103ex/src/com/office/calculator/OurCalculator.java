@@ -1,5 +1,6 @@
 package com.office.calculator;
 
+// 전달받은 재료로 연산 실행하고 출력하는 역할
 public class OurCalculator {
 	                                      // DI (Dependency Injection, 의존성 주입) 
 	public void calculate(int n1, int n2, ICalculator iCalculator) {

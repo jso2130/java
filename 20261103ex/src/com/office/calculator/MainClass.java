@@ -1,5 +1,6 @@
 package com.office.calculator;
 
+// 연산 숫자와 객체를 건네주는 역할
 public class MainClass {
 
 	public static void main(String[] args) {

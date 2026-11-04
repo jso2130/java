@@ -2,7 +2,7 @@ package com.office.member;
 
 import java.util.Scanner;
 
-// 요청 분석
+// 요청을 입력받아 분석
 public class MemberController implements MemberConfig {
 
 	public void execute() {
@@ -13,6 +13,17 @@ public class MemberController implements MemberConfig {
 		
 		boolean systemFlag = true;
 		
+		if (IS_DEV) 
+			new MemberDumy().signUpForDumy(memberService);
+		
+		String memId;
+		String memPw;
+		String memMail;
+		String memPhone;
+		
+		MemberDto memberDto;
+		
+			
 		while(systemFlag) {
 			
 			System.out.println("1. SIGN-UP   2. SIGN-IN   3.MODIFY   4.DELETE   99.SYSTEM-OUT");
@@ -20,22 +31,72 @@ public class MemberController implements MemberConfig {
 			
 			switch (selectedMenuNum) {
 			
+			/*1. 회원가입*/
 			case SIGN_UP:
-				memberService.signUp(scanner);
+				
+				// 정보 입력받기
+				System.out.println("Input new member ID");
+				memId = scanner.next();
+				
+				System.out.println("Input new member PW");
+				memPw = scanner.next();
+				
+				System.out.println("Input new member MAIL");
+				memMail = scanner.next();
+				
+				System.out.println("Input new member PHONE");
+				memPhone = scanner.next();
+				
+				// 데이터를 하나로 묶어줌
+				memberDto = new MemberDto(memId, memPw, memMail, memPhone);
+				
+				// 묶은 객체로 전달
+				memberService.signUp(memberDto);
+				
 				break;
 				
+			/*2. 로그인*/
 			case SIGN_IN:
-				memberService.signIn(scanner);
-				break;
 				
+				// 정보 입력받기
+				System.out.println("Input member ID");
+				memId = scanner.next();
+				
+				System.out.println("Input member PW");
+				memPw = scanner.next();
+				
+				memberDto = new MemberDto();
+				memberDto.setMemId(memId);
+				memberDto.setMemPw(memPw);
+				
+				memberService.signIn(memberDto);
+				
+				break;
+			
+			/*3. 정보 수정*/
 			case MODIFY:
-				memberService.modify(scanner);
+				memberService.modify();
 				break;
-				
+			
+			/*4. 탈퇴*/
 			case DELETE:
-				memberService.delete(scanner);
-				break;
 				
+				// 정보 입력받기
+				System.out.println("Input member ID");
+				memId = scanner.next();
+				
+				System.out.println("Input member PW");
+				memPw = scanner.next();
+				
+				memberDto = new MemberDto();
+				memberDto.setMemId(memId);
+				memberDto.setMemPw(memPw);
+				
+				memberService.delete(memberDto);
+
+				break;
+			
+			/*99. 시스템 종료*/
 			case SYSTEM_OUT:
 				
 				systemFlag = false;
