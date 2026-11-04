@@ -11,7 +11,6 @@ public class MainClass {
 		
 		Object myCar = calculator.productCar();
 		
-		
 	}
 	
 }

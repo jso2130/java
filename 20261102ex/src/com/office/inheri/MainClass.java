@@ -13,8 +13,6 @@ public class MainClass {
 //		parentRestaurant.makeJajang();
 //		parentRestaurant.makeJjamppong();
 		
-		
-		
 		ChildRestaurant childRestaurant = new ChildRestaurant();
 		childRestaurant.makeJajang(ChildRestaurant.CHILD_MENU);     // true = 아들꺼, false = 아빠꺼
 		childRestaurant.makeJjamppong();

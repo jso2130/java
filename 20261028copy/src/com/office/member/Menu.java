@@ -2,7 +2,6 @@ package com.office.member;
 
 public class Menu {
 
-	
 	// static : 정적 공유 키워드로 
 	final static int MENU_SIGN_UP 				= 1;
 	final static int MENU_SIGN_IN 				= 2;

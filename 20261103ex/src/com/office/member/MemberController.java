@@ -2,7 +2,7 @@ package com.office.member;
 
 import java.util.Scanner;
 
-// 요청을 입력받아 분석
+// 요청 분석하고 데이터를 입력받아 전달
 public class MemberController implements MemberConfig {
 
 	public void execute() {
@@ -11,10 +11,9 @@ public class MemberController implements MemberConfig {
 		
 		MemberService memberService = new MemberService();
 		
-		boolean systemFlag = true;
-		
 		if (IS_DEV) 
 			new MemberDumy().signUpForDumy(memberService);
+		
 		
 		String memId;
 		String memPw;
@@ -23,11 +22,13 @@ public class MemberController implements MemberConfig {
 		
 		MemberDto memberDto;
 		
-			
+		boolean systemFlag = true;
 		while(systemFlag) {
 			
+			// 메뉴 입력 받음
 			System.out.println("1. SIGN-UP   2. SIGN-IN   3.MODIFY   4.DELETE   99.SYSTEM-OUT");
 			int selectedMenuNum = scanner.nextInt();
+			
 			
 			switch (selectedMenuNum) {
 			
@@ -47,10 +48,10 @@ public class MemberController implements MemberConfig {
 				System.out.println("Input new member PHONE");
 				memPhone = scanner.next();
 				
-				// 데이터를 하나로 묶어줌
+				// 입력받은 데이터 하나로 묶음
 				memberDto = new MemberDto(memId, memPw, memMail, memPhone);
 				
-				// 묶은 객체로 전달
+				// 묶은 객체로 회원가입 비즈니스 로직에 전달
 				memberService.signUp(memberDto);
 				
 				break;
@@ -65,10 +66,12 @@ public class MemberController implements MemberConfig {
 				System.out.println("Input member PW");
 				memPw = scanner.next();
 				
+				// 입력받은 데이터 하나로 묶음
 				memberDto = new MemberDto();
 				memberDto.setMemId(memId);
 				memberDto.setMemPw(memPw);
 				
+				// 묶은 객체로 로그인 비즈니스 로직에 전달
 				memberService.signIn(memberDto);
 				
 				break;
@@ -107,7 +110,6 @@ public class MemberController implements MemberConfig {
 			}
 			
 		}
-		
 		
 		scanner.close();
 		

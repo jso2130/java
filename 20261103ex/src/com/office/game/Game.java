@@ -2,11 +2,11 @@ package com.office.game;
 
 public class Game {
 
-	// 캐릭터
 	private Bear bear;
 	private Robot robot;
 	private AirPlain airPlain;
 	private Dog dog;
+	
 	private ICharacter[] iCharacters;
 
 	public Game(Bear bear, Robot robot, AirPlain airPlain, Dog dog) {

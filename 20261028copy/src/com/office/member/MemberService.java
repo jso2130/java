@@ -48,11 +48,14 @@ public class MemberService {
 		String memberPw = scanner.next();
 		
 		while (true) {
+			
 			if (memberPw.length() < 8 || memberPw.length() > 12) {
+				
 				System.out.println("Input new member PW");
 				memberPw = scanner.next();
 				
 			} else {
+				
 				break;
 				
 			}
@@ -100,10 +103,12 @@ public class MemberService {
 			Member searchedMember = db.memberDB.get(memberId);
 			
 			if (searchedMember != null && searchedMember.memberPw.equals(memberPw)) {
+				
 				System.out.println("1.SIGN-IN SUCCESS!!");
 				break;
 				
 			} else {
+				
 				System.out.println("3.SIGN-IN FAIL!!");
 				count++;
 				
@@ -174,15 +179,11 @@ public class MemberService {
 		Member searchedMember = db.memberDB.get(memberId);
 		
 		if (searchedMember != null && searchedMember.memberPw.equals(memberPw)) {
+			
 			db.memberDB.remove(memberId);
+			
 		}
 		
 	}
 	
 }
-
-
-
-
-
-

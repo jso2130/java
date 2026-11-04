@@ -2,7 +2,6 @@ package com.office.member;
 
 public class MemberDto {
 
-	// 
 	private String memId;
 	private String memPw;
 	private String memMail;
@@ -53,7 +52,5 @@ public class MemberDto {
 	public void setMemPhone(String memPhone) {
 		this.memPhone = memPhone;
 	}
-	
-	
 	
 }

@@ -10,8 +10,6 @@
     <fullyQualifiedTypeName name="com.office.member.Menu"/>
     <fullyQualifiedTypeName name="com.office.ex.Deari"/>
     <fullyQualifiedTypeName name="com.office.ex.PayCount"/>
-    <fullyQualifiedTypeName name="java.util.HashMap"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.office.inheri.restraurant.ParentRestaurant"/>
     <fullyQualifiedTypeName name="com.office.inheri.restraurant.ChildRestaurant"/>
     <fullyQualifiedTypeName name="java.security.PublicKey"/>
@@ -22,4 +20,9 @@
     <fullyQualifiedTypeName name="com.office.game.ICharacter"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="com.office.member.MemberDto"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="com.office.member.MemberDao"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.office.member.MemberDumy"/>
 </qualifiedTypeNameHistroy>

@@ -17,12 +17,12 @@ public class Calculator {
 		
 	}
 	*/
-	
-	      // 
+	 
 	public Object productCar() {   // 메서드 선언부
 		
 		Car car = new Car();
 		return car;
 		
 	}
+	
 }

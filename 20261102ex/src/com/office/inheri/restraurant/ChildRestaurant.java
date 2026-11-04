@@ -23,32 +23,26 @@ public class ChildRestaurant extends ParentRestaurant
 			System.out.println("아들 자장면 만듦");
 
 		}
-		                
-				
+		                		
 	}
 	
 	@Override
 	public void makeTangsuyuk() {
 		
-		
-		
 	}
 
 	@Override
 	public void checkFloor() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void checkToilet() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void checkHwagu() {
-		// TODO Auto-generated method stub
 		
 	}
 	

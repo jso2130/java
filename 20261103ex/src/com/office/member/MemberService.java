@@ -2,6 +2,7 @@ package com.office.member;
 
 import java.util.Scanner;
 
+// 비즈니스 로직
 public class MemberService implements IMemberService {
 
 	MemberDao memberDao = new MemberDao();
@@ -10,12 +11,13 @@ public class MemberService implements IMemberService {
 	public void signUp(MemberDto memberDto) {
 		
 		// 아이디 중복 체크
-		boolean isMember = memberDao.isMember(memberDto.getMemId());
+		boolean isMember = memberDao.isMember(memberDto.getMemId());  // 아이디(key)값만 전달해서 조회
+		
 		
 		// 회원 정보 저장(회원가입)
-		if (!isMember) {           // false
+		if (!isMember) {           // false - 중복 정보가 없으면 회원가입 가능
 			
-			int result = memberDao.insertNewMember(memberDto);  // 0 : 실패, 1 : 성공
+			int result = memberDao.insertNewMember(memberDto);       // 0 : 실패, 1 : 성공
 			
 			if (result == 0) {
 				
