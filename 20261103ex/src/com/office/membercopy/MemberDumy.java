@@ -1,5 +1,7 @@
 package com.office.membercopy;
 
+import java.util.ArrayList;
+
 public class MemberDumy {
 
 	private String[] memIds = {"gildong", "chanho"};
@@ -14,7 +16,13 @@ public class MemberDumy {
 		
 		for (int i = 0; i < memIds.length; i++) {
 			
-			MemberDto memberDto = new MemberDto(memIds[i], memPws[i], memMails[i], memPhones[i])
+			MemberDto memberDto = new MemberDto(memIds[i], memPws[i], memMails[i], memPhones[i]);
+			
+			for (int j = 0; j < memDiaries[i].length; j++) {
+				
+				memberDto.getDiaries().add(memDiaries[i][j]);
+				
+			}
 			
 		}
 		
