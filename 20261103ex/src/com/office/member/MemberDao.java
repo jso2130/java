@@ -8,7 +8,7 @@ public class MemberDao {
 	HashMap<String, MemberDto> db = new HashMap<String, MemberDto>();
 
 	
-	/*DB 검색*/
+	/*아이디 중복 체크*/
 	public boolean isMember(String memId) {
 		
 		MemberDto memberDto = db.get(memId);      // DB에 정보가 있는지 확인
@@ -17,7 +17,7 @@ public class MemberDao {
 	
 	}
 
-	
+	/*로그인 할 때 회원 정보 조회*/
 	public MemberDto searchMemberByMemIdAndMemPw(MemberDto memberDto) {
 		
 		MemberDto dto = db.get(memberDto.getMemId());
@@ -70,6 +70,15 @@ public class MemberDao {
 			return null;
 			
 		}
+		
+	}
+
+	public MemberDto updateMemberByMemId(MemberDto memberDto) {
+
+
+		db.put(memberDto.getMemId(),memberDto);
+		
+		return db.get(memberDto.getMemId());
 		
 	}
 

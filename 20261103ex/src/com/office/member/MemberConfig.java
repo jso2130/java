@@ -4,6 +4,8 @@ public interface MemberConfig {  // 인터페이스에는 상수도 존재할 �
 
 	final boolean IS_DEV = true;
 	
+	final boolean SYSTEM_FLAG = true;
+	
 	final int SIGN_UP = 1;
 	final int SIGN_IN = 2;
 	final int MODIFY = 3;

@@ -40,7 +40,7 @@ public class MemberService implements IMemberService {
 
 	@Override
 	public void signIn(MemberDto memberDto) {
-		           // 동사 + 명사 By 조건
+		                                          // 동사 + 명사 By 조건
 		MemberDto searchedMemberDto = memberDao.searchMemberByMemIdAndMemPw(memberDto);
 		
 		if (searchedMemberDto != null) {
@@ -56,8 +56,16 @@ public class MemberService implements IMemberService {
 	}
 
 	@Override
-	public void modify() {
-		// TODO Auto-generated method stub
+	public void modify(MemberDto memberDto) {
+		
+		MemberDto updateMemberDto = memberDao.updateMemberByMemId(memberDto);
+		
+		if (updateMemberDto != null) {
+			System.out.println("수정완료되었습니다");
+		} else {
+			
+			System.out.println("수정에 실패하였습니다");
+		}
 		
 	}
 
@@ -75,6 +83,14 @@ public class MemberService implements IMemberService {
 			System.out.println("탈퇴 실패");
 			
 		}
+		
+	}
+	
+	public boolean doAuthenticationByMemIdAndMemPw(MemberDto memberDto) {
+		
+		MemberDto dto = memberDao.searchMemberByMemIdAndMemPw(memberDto);
+		
+		return dto != null ? true : false;
 		
 	}
 

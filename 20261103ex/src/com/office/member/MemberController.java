@@ -5,11 +5,9 @@ import java.util.Scanner;
 // 요청 분석하고 데이터를 입력받아 전달
 public class MemberController implements MemberConfig {
 
-	public void execute() {
+	public void execute(MemberService memberService) {
 		
 		Scanner scanner = new Scanner(System.in);
-		
-		MemberService memberService = new MemberService();
 		
 		if (IS_DEV) 
 			new MemberDumy().signUpForDumy(memberService);
@@ -22,8 +20,7 @@ public class MemberController implements MemberConfig {
 		
 		MemberDto memberDto;
 		
-		boolean systemFlag = true;
-		while(systemFlag) {
+		while(SYSTEM_FLAG) {
 			
 			// 메뉴 입력 받음
 			System.out.println("1. SIGN-UP   2. SIGN-IN   3.MODIFY   4.DELETE   99.SYSTEM-OUT");
@@ -78,10 +75,41 @@ public class MemberController implements MemberConfig {
 			
 			/*3. 정보 수정*/
 			case MODIFY:
-				memberService.modify();
+				
+				System.out.println("Input member ID");
+				memId = scanner.next();
+				
+				System.out.println("Input member PW");
+				memPw = scanner.next();
+				
+				memberDto = new MemberDto();
+				memberDto.setMemId(memId);
+				memberDto.setMemPw(memPw);
+				
+				boolean isAuthentication = memberService.doAuthenticationByMemIdAndMemPw(memberDto);
+				
+				if(isAuthentication) {
+					
+					System.out.println("Input member PW");
+					memPw = scanner.next();
+					
+					System.out.println("Input new member MAIL");
+					memMail = scanner.next();
+					
+					System.out.println("Input new member PHONE");
+					memPhone = scanner.next();
+					
+					memberDto.setMemPw(memPw);
+					memberDto.setMemMail(memMail);
+					memberDto.setMemPhone(memPhone);
+					
+				}
+				
+				memberService.modify(memberDto);
+				
 				break;
 			
-			/*4. 탈퇴*/
+			
 			case DELETE:
 				
 				// 정보 입력받기
@@ -102,7 +130,7 @@ public class MemberController implements MemberConfig {
 			/*99. 시스템 종료*/
 			case SYSTEM_OUT:
 				
-				systemFlag = false;
+				SYSTEM_FLAG = false;
 				System.out.println("GOOD BYE");
 				
 				break;
