@@ -4,8 +4,14 @@ import java.util.Scanner;
 
 // 비즈니스 로직
 public class MemberService implements IMemberService {
-
-	MemberDao memberDao = new MemberDao();
+	
+	private final MemberDao memberDao;
+	
+	public MemberService(MemberDao memberDao) {
+		
+		this.memberDao = memberDao;
+		
+	}
 	
 	@Override
 	public void signUp(MemberDto memberDto) {

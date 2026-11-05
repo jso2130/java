@@ -1,5 +1,7 @@
 package com.office.membercopy;
 
+import java.util.ArrayList;
+
 public class MemberDto {
 
 	private String memId;
@@ -7,16 +9,22 @@ public class MemberDto {
 	private String memMail;
 	private String memPhone;
 	
+	private ArrayList<String> diaries;
+	
 	public MemberDto() {
-	
-	}
-	
-	public MemberDto(String memId, String memPw, String memMail, String memPhone) {
 		
+		this.diaries = new ArrayList<String>();
+		
+	}
+
+	public MemberDto(String memId, String memPw, String memMail, String memPhone) {
+
 		this.memId = memId;
 		this.memPw = memPw;
 		this.memMail = memMail;
 		this.memPhone = memPhone;
+		
+		this.diaries = new ArrayList<String>();
 		
 	}
 
@@ -52,4 +60,14 @@ public class MemberDto {
 		this.memPhone = memPhone;
 	}
 
+	public ArrayList<String> getDiaries() {
+		return diaries;
+	}
+
+	public void setDiaries(ArrayList<String> diaries) {
+		this.diaries = diaries;
+	}
+	
+	
+	
 }

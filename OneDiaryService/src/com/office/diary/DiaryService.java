@@ -12,9 +12,9 @@ public class DiaryService {
 		
 	}
 
-	public void writeNewDiary(DiaryDao diaryDao) {
+	public void writeNewDiary(DiaryDto diaryDto) {
 		
-		boolean result = diaryDao.insertDiary(diaryDao);
+		boolean result = diaryDao.insertDiary(diaryDto);
 		
 		if (result) {
 			
@@ -34,7 +34,7 @@ public class DiaryService {
 		
 		for (int i = 0; i < diaries.size(); i++) {
 			
-			System.out.println(diaries[i]);
+			System.out.println(diaries.get(i));
 			
 		}
 		

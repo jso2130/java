@@ -13,9 +13,6 @@ public class DiaryDto {
 		this.txt = txt;
 		
 	}
-
-	private String txt;
-
 	
 	public String getTxt() {
 		return txt;

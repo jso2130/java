@@ -1,19 +1,14 @@
 package com.office.membercopy;
 
-// 필요한 객체(부품)를 한번에 생성하는 싱글톤 클래스
 public class MemberContainer {
-
-	// 부품이 한번만 생성되게 상수 + private
-	final private MemberDao memberDao = new MemberDao();
-	final private MemberService memberService = new MemberService(memberDao);
-	final private MemberController memberController = new MemberController(memberService);
 	
+	final private MemberDao memberDao = new MemberDao();
+	final private MemberSurvice memberSurvice = new MemberSurvice(memberDao);
+	final private MemberController memberController = new MemberController(memberSurvice);
+
 	private static MemberContainer memberContainer;
 	
-	
-	private MemberContainer() {
-			
-	}
+	private MemberContainer() {}
 	
 	public static MemberContainer getInstance() {
 		
@@ -27,22 +22,16 @@ public class MemberContainer {
 		
 	}
 
-	public MemberController getMemberController() {
-		
-		return memberController;
-		
-	}
-
-	public MemberService getMemberService() {
-		
-		return memberService;
-		
-	}
-
 	public MemberDao getMemberDao() {
-		
 		return memberDao;
-		
+	}
+
+	public MemberSurvice getMemberSurvice() {
+		return memberSurvice;
+	}
+
+	public MemberController getMemberController() {
+		return memberController;
 	}
 	
 }

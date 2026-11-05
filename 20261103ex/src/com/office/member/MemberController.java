@@ -5,7 +5,15 @@ import java.util.Scanner;
 // 요청 분석하고 데이터를 입력받아 전달
 public class MemberController implements MemberConfig {
 
-	public void execute(MemberService memberService) {
+	private final MemberService memberService;
+	
+	public MemberController(MemberService memberService) {
+		
+		this.memberService = memberService;
+		
+	}
+	
+	public void execute() {
 		
 		Scanner scanner = new Scanner(System.in);
 		
@@ -20,7 +28,8 @@ public class MemberController implements MemberConfig {
 		
 		MemberDto memberDto;
 		
-		while(SYSTEM_FLAG) {
+		boolean systemFlag = true;
+		while(systemFlag) {
 			
 			// 메뉴 입력 받음
 			System.out.println("1. SIGN-UP   2. SIGN-IN   3.MODIFY   4.DELETE   99.SYSTEM-OUT");
@@ -130,7 +139,7 @@ public class MemberController implements MemberConfig {
 			/*99. 시스템 종료*/
 			case SYSTEM_OUT:
 				
-				SYSTEM_FLAG = false;
+				systemFlag = false;
 				System.out.println("GOOD BYE");
 				
 				break;
