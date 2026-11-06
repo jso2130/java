@@ -6,8 +6,12 @@ public interface IMemberService {
 	
 	public boolean doSignIn(MemberDto memberDto);
 	
-	public void doModify(String currentMemId, MemberDto memberDto);
+	public void doModify(MemberDto memberDto);
 	
 	public void doDelete(MemberDto memberDto);
+	
+	public void doDiaryWrite(String sessionId, DiaryDto diaryDto);
+	
+	public void doDiaryRead(MemberDto memberDto);
 	
 }

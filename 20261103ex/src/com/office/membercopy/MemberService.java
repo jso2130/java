@@ -1,10 +1,10 @@
 package com.office.membercopy;
 
-public class MemberSurvice implements IMemberService {
+public class MemberService implements IMemberService {
 
 	final private MemberDao memberDao;
 	
-	public MemberSurvice(MemberDao memberDao) {
+	public MemberService(MemberDao memberDao) {
 		
 		this.memberDao = memberDao;
 		
@@ -59,9 +59,9 @@ public class MemberSurvice implements IMemberService {
 
 
 	@Override
-	public void doModify(String currentMemId, MemberDto memberDto) {
+	public void doModify(MemberDto memberDto) {
 		
-		MemberDto updateMemberDto = memberDao.updateMemberByMemId(currentMemId, memberDto);
+		MemberDto updateMemberDto = memberDao.updateMemberByMemId(memberDto.getMemId(), memberDto);
 		
 		if (updateMemberDto != null) {
 			
@@ -78,6 +78,32 @@ public class MemberSurvice implements IMemberService {
 
 	@Override
 	public void doDelete(MemberDto memberDto) {
+
+		boolean result = memberDao.deleteMember()
+		
+	}
+
+
+	@Override
+	public void doDiaryWrite(String sessionId, DiaryDto diaryDto) {
+		
+		boolean updatedDiary = memberDao.setDiary(sessionId, diaryDto);
+		
+		if (updatedDiary) {
+			
+			System.out.println("다이어리가 추가되었습니다.");
+			
+		} else {
+			
+			System.out.println("다이어리 추가에 실패하였습니다.");
+			
+		}
+		
+	}
+
+
+	@Override
+	public void doDiaryRead(MemberDto memberDto) {
 		// TODO Auto-generated method stub
 		
 	}

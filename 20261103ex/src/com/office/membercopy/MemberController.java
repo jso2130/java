@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class MemberController implements Config, IFlag {
 	
-	final private MemberSurvice memberSurvice;
+	final private MemberService memberService;
 	final private MemberSession memberSession;
 	
-	public MemberController (MemberSurvice memberSurvice, MemberSession memberSession) {
+	public MemberController (MemberService memberService, MemberSession memberSession) {
 		
-		this.memberSurvice = memberSurvice;
+		this.memberService = memberService;
 		this.memberSession = memberSession;
 		
 	}
@@ -19,7 +19,7 @@ public class MemberController implements Config, IFlag {
 		Scanner scanner = new Scanner(System.in);
 		
 		if (IS_DEV)
-			new MemberDumy().signUpForDumy(memberSurvice);
+			new MemberDumy().signUpForDumy(memberService);
 		
 		String memberId;
 		String memberPw;
@@ -27,76 +27,104 @@ public class MemberController implements Config, IFlag {
 		String memberPhone;
 		
 		MemberDto memberDto;
+		int selectedMenuNum;
+		
+		String currentMemId = memberSession.getCurrentSignInedMemberId();
 		
 		boolean systemFlag = true;
 		while (systemFlag) {
 			
-			System.out.println("1.회원가입   2.로그인   3.정보 수정   4.탈퇴   99.시스템 종료");
-			int selectedMenuNum = scanner.nextInt();
+			// 로그인 전
+			if (currentMemId == null) {
 			
-			switch (selectedMenuNum) {
+				System.out.println("1.회원가입   2.로그인   99.시스템 종료");
+				selectedMenuNum = scanner.nextInt();
 			
-			case SIGN_UP:
 				
-				System.out.println("아이디를 입력하세요");
-				memberId = scanner.next();
-				
-				System.out.println("비밀번호를 입력하세요");
-				memberPw = scanner.next();
-				
-				System.out.println("이메일를 입력하세요");
-				memberMail = scanner.next();
-				
-				System.out.println("전화번호를 입력하세요");
-				memberPhone = scanner.next();
-				
-				memberDto = new MemberDto(memberId, memberPw, memberMail, memberPhone);
-				
-				memberSurvice.doSignUp(memberDto);
-				
-				break;
+				switch (selectedMenuNum) {
+			
+				/*1. 회원가입*/
+				case SIGN_UP:
+					
+					System.out.println("아이디를 입력하세요");
+					memberId = scanner.next();
+					
+					System.out.println("비밀번호를 입력하세요");
+					memberPw = scanner.next();
+					
+					System.out.println("이메일를 입력하세요");
+					memberMail = scanner.next();
+					
+					System.out.println("전화번호를 입력하세요");
+					memberPhone = scanner.next();
+					
+					memberDto = new MemberDto(memberId, memberPw, memberMail, memberPhone);
+					
+					memberService.doSignUp(memberDto);
+					
+					break;
 
-			case SIGN_IN:
-				
-				int cnt = 0;
-				while (true) {
+				/*2. 로그인*/
+				case SIGN_IN:
+						
+					System.out.println("아이디를 입력하세요");
+					memberId = scanner.next();
 					
-					if (cnt < 3) {
+					System.out.println("비밀번호를 입력하세요");
+					memberPw = scanner.next();
 					
-						System.out.println("아이디를 입력하세요");
-						memberId = scanner.next();
-						
-						System.out.println("비밀번호를 입력하세요");
-						memberPw = scanner.next();
-						
-						memberDto = new MemberDto();
-						memberDto.setMemId(memberId);
-						memberDto.setMemPw(memberPw);
-						
+					memberDto = new MemberDto();
+					memberDto.setMemId(memberId);
+					memberDto.setMemPw(memberPw);
+					
+					boolean result = memberService.doSignIn(memberDto);
+					
+					if (result)
 						memberSession.setCurrentSignInedMemberId(memberId);
-						boolean result = memberSurvice.doSignIn(memberDto);
-						
-						if (!result) {
-							cnt++;
-						}
+							
+					break;
+					
+				/*99. 시스템 종료*/
+				case SYSTEM_OUT:
+					
+					systemFlag = false;
+					System.out.println("프로그램이 종료됩니다.");
+					
+					break;
 				
+				}
+			
+			// 로그인 후 
+			} else {
+				
+				System.out.println("1.로그아웃   2.정보수정   3.다이어리 작성   4.다이어리 목록 조회   5.탈퇴   99.시스템 종료");
+				selectedMenuNum = scanner.nextInt();
+				
+				
+				switch (selectedMenuNum) {
+				
+				/*1. 로그아웃*/
+				case SIGN_OUT:
+					
+					System.out.println("로그아웃을 진행하시겠습니까?");
+					System.out.println("1.로그아웃   2.취소");
+					selectedMenuNum = scanner.nextInt();
+					
+					if(selectedMenuNum == 1) {
+						
+						memberSession.setCurrentSignInedMemberId(null);
+						System.out.println("로그아웃이 완료되었습니다");
+						
 					} else {
 						
-						System.out.println("로그인 실패 횟수가 3회를 초과했습니다. 잠시후 다시 시도하세요");
-						
-						break;
+						System.out.println("로그아웃이 취소되었습니다");
 						
 					}
-					
-				} 
+						
+					break;
 				
-				break;
-			
-			case MODIFY:
-				
-				String currentMemId = memberSession.getCurrentSignInedMemberId();
-				
-				if (currentMemId != null) {
+				/*2. 정보수정*/
+				case MODIFY:
 					
 					System.out.println("비밀번호를 입력하세요");
 					memberPw = scanner.next();
@@ -112,38 +140,67 @@ public class MemberController implements Config, IFlag {
 					memberDto.setMemMail(memberMail);
 					memberDto.setMemPhone(memberPhone);
 					
-					memberSurvice.doModify(currentMemId, memberDto);
+					memberService.doModify(memberDto);
 					
-				} else {
+					break;
 					
-					System.out.println("로그인이 필요한 서비스입니다. 로그인을 진행해주세요");
+				/*3. 다이어리 작성*/
+				case DIATY_WRITE:
+					
+					System.out.println("새로운 다이어리 제목을 작성해주세요.");
+					String title = scanner.nextLine();
+					
+					System.out.println("새로운 다이어리 내용을 작성해주세요.");
+					String content = scanner.nextLine();
+					
+					DiaryDto diaryDto = new DiaryDto(title, content);
+					String sessionId = memberSession.getCurrentSignInedMemberId();
+					
+					memberService.doDiaryWrite(sessionId, diaryDto);
+					
+					break;
+				
+				/*4. 다이어리 목록 조회*/
+				case DIATY_READ:
+					
+					memberService.doDiaryRead(memberDto);
+					
+					break;
+					
+				/*5. 탈퇴*/		
+				case DELETE:
+					
+					System.out.println("아이디를 입력하세요");
+					memberId = scanner.next();
+					
+					System.out.println("비밀번호를 입력하세요");
+					memberPw = scanner.next();
+					
+					if (currentMemId == memberId) {
+						
+						memberDto = new MemberDto();
+						memberDto.setMemId(memberId);
+						memberDto.setMemPw(memberPw);
+						
+						memberService.doDelete(memberDto);
+						
+					} else {
+						
+						System.out.println("현재 로그인된 정보가 아닙니다. 다시 입력해주세요");
+						
+					}
+					
+					break;
+					
+				/*99. 시스템 종료*/	
+				case SYSTEM_OUT:
+					
+					systemFlag = false;
+					System.out.println("프로그램이 종료됩니다.");
+					
+					break;
 					
 				}
-				
-				break;
-				
-			case DELETE:
-				
-				System.out.println("아이디를 입력하세요");
-				memberId = scanner.next();
-				
-				System.out.println("비밀번호를 입력하세요");
-				memberPw = scanner.next();
-				
-				memberDto = new MemberDto();
-				memberDto.setMemId(memberId);
-				memberDto.setMemPw(memberPw);
-				
-				memberSurvice.doDelete(memberDto);
-				
-				break;
-				
-			case SYSTEM_OUT:
-				
-				systemFlag = false;
-				System.out.println("프로그램이 종료됩니다.");
-				
-				break;
 			
 			}
 			

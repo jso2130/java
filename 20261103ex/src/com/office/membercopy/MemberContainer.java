@@ -4,8 +4,8 @@ public class MemberContainer {
 	
 	final private MemberDao memberDao = new MemberDao();
 	final private MemberSession memberSession = new MemberSession();
-	final private MemberSurvice memberSurvice = new MemberSurvice(memberDao);
-	final private MemberController memberController = new MemberController(memberSurvice, memberSession);
+	final private MemberService memberService = new MemberService(memberDao);
+	final private MemberController memberController = new MemberController(memberService, memberSession);
 
 	private static MemberContainer memberContainer;
 	
@@ -27,8 +27,8 @@ public class MemberContainer {
 		return memberDao;
 	}
 
-	public MemberSurvice getMemberSurvice() {
-		return memberSurvice;
+	public MemberService getMemberSurvice() {
+		return memberService;
 	}
 
 	public MemberController getMemberController() {

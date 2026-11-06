@@ -9,11 +9,11 @@ public class MemberDto {
 	private String memMail;
 	private String memPhone;
 	
-	private ArrayList<String> diaries;
+	private ArrayList<DiaryDto> diaries;
 	
 	public MemberDto() {
 		
-		this.diaries = new ArrayList<String>();
+		this.diaries = new ArrayList<DiaryDto>();
 		
 	}
 
@@ -24,7 +24,7 @@ public class MemberDto {
 		this.memMail = memMail;
 		this.memPhone = memPhone;
 		
-		this.diaries = new ArrayList<String>();
+		this.diaries = new ArrayList<DiaryDto>();
 		
 	}
 
@@ -60,14 +60,8 @@ public class MemberDto {
 		this.memPhone = memPhone;
 	}
 
-	public ArrayList<String> getDiaries() {
+	public ArrayList<DiaryDto> getDiaries() {
 		return diaries;
 	}
-
-	public void setDiaries(ArrayList<String> diaries) {
-		this.diaries = diaries;
-	}
-	
-	
 	
 }

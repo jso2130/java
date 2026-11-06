@@ -22,12 +22,6 @@ public class MemberDao {
 		return db.get(memberDto.getMemId()) != null ? true : false; 
 		
 	}
-	
-	public void setCurrentSignInedMemberId(MemberDto memberDto) {
-		
-		
-		
-	}
 
 	public MemberDto searchMemberByMemIdAndMemPw(MemberDto memberDto) {
 		
@@ -50,6 +44,22 @@ public class MemberDao {
 		db.put(currentMemId, memberDto);
 		
 		return db.get(currentMemId);
+		
+	}
+
+	public boolean setDiary(String sessionId, DiaryDto diaryDto) {
+		
+		MemberDto memberDto = db.get(sessionId);
+	    
+	    if (memberDto != null) {
+
+	        memberDto.getDiaries().add(diaryDto);
+	        return true;
+	        
+	    }
+	    
+	    return false;
+		
 	}
 	
 }

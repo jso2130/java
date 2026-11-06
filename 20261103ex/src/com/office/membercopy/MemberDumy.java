@@ -12,7 +12,7 @@ public class MemberDumy {
 	private String[][] memDiaries = {{"첫번째 일기","두번째 일기"}, {"출석합니다"}};
 	
 	
-	public void signUpForDumy(MemberSurvice memberSurvice) {
+	public void signUpForDumy(MemberService memberSurvice) {
 		
 		for (int i = 0; i < memIds.length; i++) {
 			
