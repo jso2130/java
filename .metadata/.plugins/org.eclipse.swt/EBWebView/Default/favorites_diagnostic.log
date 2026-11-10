@@ -904,3 +904,14 @@
 2026-11-06 07:13:50.888: [INFO] BookmarkModelLoaded, ids_reassigned: 0
 2026-11-06 07:13:50.888: [INFO] BookmarksLoadDropped droppedNodes=0
 2026-11-06 07:13:50.888: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-11-06 08:22:30.503: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-11-10 01:52:56.609: [INFO] CurrentProfilePath: C:\jsy\java\pjt\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-11-10 01:52:56.609: [INFO] Profiles total count: 1
+2026-11-10 01:52:56.609: [INFO] Profile: name=프로필 1 path=C:\jsy\java\pjt\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=2026-11-05T06:14:27.650Z
+2026-11-10 01:52:56.609: [INFO] LastUsedProfileDir: C:\jsy\java\pjt\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-11-10 01:52:56.609: [INFO] MostRecentlyActiveProfile: name=프로필 1 path=C:\jsy\java\pjt\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=2026-11-05T06:14:27.650Z
+2026-11-10 01:52:56.609: [INFO] OnDoneLoading sync enabled: 0
+2026-11-10 01:52:56.609: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-11-10 01:52:56.609: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-11-10 01:52:56.609: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-11-10 01:53:40.076: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
